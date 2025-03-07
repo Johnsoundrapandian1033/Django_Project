@@ -1,0 +1,18 @@
+{% extends 'baseIndex.html' %}
+{% block content %}
+    <div class="container-fluid ">
+        <h3>About Us</h3>
+        <div class="d-flex gap-3 justify-content-center mt-5">
+            <img src="https://picsum.photos/300/300" alt="">
+            <div class="content">
+                {{take_content}}
+            </div>
+            
+        </div>
+    </div>
+    <footer class="bg-dark text-light p-3 fixed-bottom">
+        <div class="col-4 d-flex justify-content-center align-items-center">
+          <span class="text-light">© 2021 Company, Inc</span>
+        </div>
+        {% endblock %}
+    

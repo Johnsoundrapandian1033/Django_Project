@@ -1,0 +1,80 @@
+<!-- CREATE LAYOUT CONCEPT-->
+
+{% extends 'baseIndex.html' %} 
+<!-- base.html-la block panna content use pannurathukku use pannurom-->
+
+{% block content %} 
+<!-- base.html block panna content sethurunga solluthu-->
+       <div class="p-3">
+            <div class="row">
+                <div class="col-12"><h2>{{key}}</h2></div> 
+                <!-- Variable Interpolation  '[[var | upper,length,truncatewords:1(one word ans),default:"String"]]'-->
+            </div>
+        </div>
+        <div class="container pt-3 pb-3 py-3">
+            <div class="row">
+                <!-- post render() mathod-la irrunthu return aagura object_name. -->
+                {% if post %} <!-- [% if post %] post empty-a irruntha if irruntha card access pannum-->
+                {% for posts in post %} <!-- for tag is a for loop -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 mb-3 " >
+                    <div class="card h-60"><img class="img-fluid rounded" src="{{posts.img_url}}" style="height:300px; width:300px;">
+                    <div class="card-body"><h5>{{posts.title | truncatechars:18 }}</h5><br> <!-- post oru object so, post.title-->
+                    <p>{{posts.content | truncatechars:110 }}</p>
+                    <!-- post oru object so, post.title -->
+                    <pre> <a style="float:left;" href="{% url 'blog:details' id=posts.slug  %}">Read more</a><b style="font-size:18;float:right;">{{posts.category.name}}</b></pre>
+                                                                                                             <!-- category -> database table_name -->
+                    <!-- blog=appName, details=pathName, id=renderMathod2 Parameter, post.id=url/id -->
+                    <!-- a href ="render_url/<int:val>" ithu hardcore url. ippudi kudukkurathu secure illla-->
+                    <!-- dynamic url create pannurom. default reverse() work pannum.
+                     url tag  use pannurom 'app_name:pathName' path_post_variable = Object.id -->
+                
+                     
+                
+                    </div></div></div>
+                {%  endfor %} <!-- for teg is end -->
+                <div class="col-12 my-3">
+                    {% if post.has_other_pages %}
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            {% if post.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1" aria-label="First">
+                                    <span aria-hidden="true">&laquo; first</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{post.previous_page_number}}" aria-label="Previous">
+                                    <span aria-hidden="true">previous</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="page-item"><span class="page-link">Page {{post.number}} of {{post.paginator.num_pages}}.</span></li>
+                            {% if post.has_next%}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{post.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">next</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{post.paginator.num_pages}}" aria-label="Last">
+                                    <span aria-hidden="true">last &raquo;</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            <div class="row">
+               
+            </div>
+            
+        </div>
+                {% else %} <!-- else tag post empty-a irruntha else vanthu access pannum.-->
+                  <h5> no post available</h5> <!--  else tag endif munnadiye sollanum.illana error varum -->
+                {% endif %} <!-- if tag end -->
+        </div>
+        
+       {% endblock %} <!-- dynamic content mudichittunu solluthu-->
