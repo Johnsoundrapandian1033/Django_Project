@@ -88,7 +88,7 @@ class Command(BaseCommand):  # Demo data insert pannurathukku Command (or) BaseC
         
         categories = Catagory.objects.all()
 
-        for title, content, img_url in zip(titles, contents, img_urls):  # zip() ellathayum are list aagirum
+        for title, content, img_url in zip(titles, contents, img_urls):  # zip() ellathayum ore list aagirum
     # title, content, img_url values ellam zip() - [(title_tuple), (content_tuple), (img_url_tuple)]
 
             category = random.choice(categories)

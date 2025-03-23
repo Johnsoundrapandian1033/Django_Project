@@ -59,7 +59,7 @@ def renderMathod(request):
                                           # Template not found error - correct url kudukkalana varum error
 
 def renderMethod2(request, id):
-    #post = next((item for item in posts if item['id']==int(val)),None) #phython for loop use panni oru ID ya hoice pannuthu
+    #post = next((item for item in posts if item['id']==int(val)),None) #phython for loop use panni oru ID ya choice pannuthu
        # static data use pannum pothu use pannirukku
     try:
         # getId = post.objects.get(pk = id) # post module vachi database-la oru record get panni oru veriable store pannuthu

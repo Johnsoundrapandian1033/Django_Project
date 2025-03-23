@@ -12,7 +12,6 @@ class Catagory(models.Model):
 
                 # Migration deleteAll
         # terminal -> del blog\migrations\* 
-
 # Create your models here.
 class post(models.Model):
     title = models.CharField(max_length=100) 
